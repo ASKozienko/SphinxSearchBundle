@@ -1,0 +1,12 @@
+parameters:
+    sphinxsearch.api.class:                        SphinxClient
+    sphinxsearch.manager.class:                    ASK\Sphinx\SphinxManager
+
+services:
+    sphinxsearch.api:
+        class:                                      %sphinxsearch.api.class%
+
+    sphinxsearch.manager:
+        class:                                      %sphinxsearch.manager.class%
+        arguments:
+            -                                       @sphinxsearch.api
