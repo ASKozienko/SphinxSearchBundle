@@ -18,11 +18,21 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('ask_sphinx');
+        $rootNode = $treeBuilder->root('ask_sphinx_search');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode('indexes')
+                    ->useAttributeAsKey('alias')
+                    ->prototype('scalar')->cannotBeEmpty()->end()
+                ->end()
+                ->scalarNode('connect_timeout')->defaultValue(0)->end()
+                ->scalarNode('retry_delay')->defaultValue(0)->end()
+                ->scalarNode('retry_count')->defaultValue(0)->end()
+                ->scalarNode('port')->defaultValue('9312')->end()
+                ->scalarNode('host')->defaultValue('localhost')->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }

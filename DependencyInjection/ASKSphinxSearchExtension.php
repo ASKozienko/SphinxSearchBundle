@@ -24,5 +24,41 @@ class ASKSphinxSearchExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $this->loadSphinxApiConfig($config, $container);
+        $this->loadSphinxManagerConfig($config, $container);
+    }
+
+    /**
+     * @param array $config
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     */
+    protected function loadSphinxApiConfig(array $config, ContainerBuilder $container)
+    {
+        $definition = $container->getDefinition('ask_sphinx_search.api');
+
+        $definition->addMethodCall('SetServer', array(
+            $config['host'],
+            $config['port']
+        ));
+
+        $definition->addMethodCall('SetRetries', array(
+            $config['retry_count'],
+            $config['retry_delay']
+        ));
+
+        $definition->addMethodCall('SetConnectTimeout', array(
+            $config['connect_timeout']
+        ));
+    }
+
+    /**
+     * @param array $config
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     */
+    protected function loadSphinxManagerConfig(array $config, ContainerBuilder $container)
+    {
+        $definition = $container->getDefinition('ask_sphinx_search.manager');
+        $definition->replaceArgument(1, $config['indexes']);
     }
 }
