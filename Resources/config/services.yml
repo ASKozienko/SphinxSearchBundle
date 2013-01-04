@@ -4,10 +4,17 @@ parameters:
 
 services:
     ask_sphinx_search.api:
-        class:                                      %ask_sphinx_search.api.class%
+        class:                                          %ask_sphinx_search.api.class%
 
     ask_sphinx_search.manager:
-        class:                                      %ask_sphinx_search.manager.class%
+        class:                                          %ask_sphinx_search.manager.class%
         arguments:
-            -                                       @ask_sphinx_search.api
-            -                                       []
+            -                                           @ask_sphinx_search.api
+            -                                           []
+
+    data_collector.sphinx:
+        class: ASK\SphinxSearchBundle\DataCollector\SphinxDataCollector
+        arguments:
+            -                                           @ask_sphinx_search.manager
+        tags:
+            -                                           { name: data_collector, template: "ASKSphinxSearchBundle:Collector:layout.html.twig", id: "sphinx" }

@@ -1,0 +1,47 @@
+{% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+        {% set color_code = 'green' %}
+        <img width="26" height="28" alt="Sphinx search" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAcCAYAAAB/E6/TAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QEBFAQQhVw1SAAAAv9JREFUSMftlk+IHFUQxn9f985mE2Pm4Ahxel6IORgQj2bX2yIheHFBCKIXBU1EcxM0kJNCDiuKeMlNQsAEzC3gIaCwCP4hSjwpZqNEMGz1mw1JXGWDrJk/XTl0z+ygiJsRL7J16df93ldfvarv1WvYtE2rTBtZFEJWA/a7sw94TKJRYa8B3wJfm8XzYxGFkM2AHwXNuNMCH0Ik+tVL6l5+l8CdH0DnJN4wi/2/JQohe9bdn5Y0B9RG59wLvHfbcQdcrDODElAipZNIQ5dfAq+YxUsACiH7CNjr7nsl4e6MPksSJ9my/Zsdjxx8dNvufarVd6F0CpItFJ0V1q5e5I/2RV+9dF5JbSujuwQtmMUDarWykxKHwN1dkiiAxN27ks4AZ83iwux7K0/0fl362Iue44UGAUgJJClKJujdWv5k6YO5brqt8aQkL+eRWVtJnsfDwPUyjQ6QAKfyvD1pFg+ZxQWAzo0radHr4EWhKmde7rzA+12K7hrpPfd/v7zSmZM0u+6ztKSK7AHgdjV24MUQstNV3VSl4bMyFV4MIqrWIgkBXvROAZjFz83iTon3qyyWRHneLszaU5J+VlmYPvBcCNl14D6AC/MzvwNHBYlDd0QnvUpW576an16sgktLwvbLkvYPiQBarWZiFvcAZ4G0irgB3Gi1mq+XZNPvUtv6Ku6TZVokpAmc0xfmZw4OfJnFfgjZgRCyB83ip3+Rd6vVTPK8XZRniC/cqUkU7iQSv4E+XIv52zcLlh4/0XkonaolLx3mp2ekXoWfBb0mMVe5bJjFX/6xM4SQHXPnLfCBVEdlfwV0E7zv7ruBVunOkfSmWTw+Tgs6AhxzZxdDxaGy0MNz+52kE2bx5Ni9bp2wuR30DnCEskXInTOSXvhzy/lXRGUdsp0Sy+4gcdksPrwRXHK3RHker7lzuUrZjxvFJWPdLeL5avjURjHp3ZKEkMkstuv1HQ13n67X711cXb21+J/cloO2FEK2J4RmYyOYiXGIzOJA01dBvvmj8v+wO7c6V60pF5IvAAAAAElFTkSuQmCC"/>
+        <span class="sf-toolbar-status sf-toolbar-status-{{ color_code }}"></span>
+    {% endset %}
+    {#{% set text %}#}
+    {#<div class="sf-toolbar-info-piece">#}
+        {#Symfony <b>sdfsdafs</b>#}
+    {#</div>#}
+    {#<div class="sf-toolbar-info-piece">#}
+        {#<a href="" rel="help">Documentation</a>#}
+    {#</div>#}
+    {#{% endset %}#}
+    {% include 'WebProfilerBundle:Profiler:toolbar_item.html.twig' with { 'link': profiler_url } %}
+{% endblock %}
+
+{#{% block head %}#}
+    {#&#123;&#35; if the web profiler panel needs some specific JS or CSS files &#35;&#125;#}
+{#{% endblock %}#}
+
+{% block menu %}
+<span class="label">
+    <span class="icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAcCAYAAAB/E6/TAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QEBFAQQhVw1SAAAAv9JREFUSMftlk+IHFUQxn9f985mE2Pm4Ahxel6IORgQj2bX2yIheHFBCKIXBU1EcxM0kJNCDiuKeMlNQsAEzC3gIaCwCP4hSjwpZqNEMGz1mw1JXGWDrJk/XTl0z+ygiJsRL7J16df93ldfvarv1WvYtE2rTBtZFEJWA/a7sw94TKJRYa8B3wJfm8XzYxGFkM2AHwXNuNMCH0Ik+tVL6l5+l8CdH0DnJN4wi/2/JQohe9bdn5Y0B9RG59wLvHfbcQdcrDODElAipZNIQ5dfAq+YxUsACiH7CNjr7nsl4e6MPksSJ9my/Zsdjxx8dNvufarVd6F0CpItFJ0V1q5e5I/2RV+9dF5JbSujuwQtmMUDarWykxKHwN1dkiiAxN27ks4AZ83iwux7K0/0fl362Iue44UGAUgJJClKJujdWv5k6YO5brqt8aQkL+eRWVtJnsfDwPUyjQ6QAKfyvD1pFg+ZxQWAzo0radHr4EWhKmde7rzA+12K7hrpPfd/v7zSmZM0u+6ztKSK7AHgdjV24MUQstNV3VSl4bMyFV4MIqrWIgkBXvROAZjFz83iTon3qyyWRHneLszaU5J+VlmYPvBcCNl14D6AC/MzvwNHBYlDd0QnvUpW576an16sgktLwvbLkvYPiQBarWZiFvcAZ4G0irgB3Gi1mq+XZNPvUtv6Ku6TZVokpAmc0xfmZw4OfJnFfgjZgRCyB83ip3+Rd6vVTPK8XZRniC/cqUkU7iQSv4E+XIv52zcLlh4/0XkonaolLx3mp2ekXoWfBb0mMVe5bJjFX/6xM4SQHXPnLfCBVEdlfwV0E7zv7ruBVunOkfSmWTw+Tgs6AhxzZxdDxaGy0MNz+52kE2bx5Ni9bp2wuR30DnCEskXInTOSXvhzy/lXRGUdsp0Sy+4gcdksPrwRXHK3RHker7lzuUrZjxvFJWPdLeL5avjURjHp3ZKEkMkstuv1HQ13n67X711cXb21+J/cloO2FEK2J4RmYyOYiXGIzOJA01dBvvmj8v+wO7c6V60pF5IvAAAAAElFTkSuQmCC" alt="Sphinx search" /></span>
+    <strong>Sphinx search</strong>
+</span>
+{% endblock %}
+
+{% block panel %}
+    {{ block('sphinx_status') }}
+{% endblock %}
+
+{% block sphinx_status %}
+<h2>Status</h2>
+<table>
+    <tr>
+        <th>Uptime</th>
+        <td>{{ collector.status.uptime }}</td>
+    </tr>
+    <tr>
+        <th>Connections</th>
+        <td>{{ collector.status.connections }}</td>
+    </tr>
+</table>
+{% endblock %}
