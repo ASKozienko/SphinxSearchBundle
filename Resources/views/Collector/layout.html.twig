@@ -106,6 +106,86 @@
         <th>Command flush attributes</th>
         <td>{{ collector.status.commandFlushAttributes }}</td>
     </tr>
+    <tr>
+        <th>Agent connect</th>
+        <td>{{ collector.status.agentConnect }}</td>
+    </tr>
+    <tr>
+        <th>Agent retry</th>
+        <td>{{ collector.status.agentRetry }}</td>
+    </tr>
+    <tr>
+        <th>Queries</th>
+        <td>{{ collector.status.queries }}</td>
+    </tr>
+    <tr>
+        <th>Dist queries</th>
+        <td>{{ collector.status.distQueries }}</td>
+    </tr>
+    <tr>
+        <th>Query wall</th>
+        <td>{{ collector.status.queryWall }}</td>
+    </tr>
+    <tr>
+        <th>Query CPU</th>
+        <td>{{ (collector.status.queryCpu is sameas(false)) ? 'OFF' : collector.status.queryCpu }}</td>
+    </tr>
+    <tr>
+        <th>Dist wall</th>
+        <td>{{ collector.status.distWall }}</td>
+    </tr>
+    <tr>
+        <th>Dist local</th>
+        <td>{{ collector.status.distLocal }}</td>
+    </tr>
+    <tr>
+        <th>Dist wait</th>
+        <td>{{ collector.status.distWait }}</td>
+    </tr>
+    <tr>
+        <th>Query reads</th>
+        <td>{{ (collector.status.queryReads is sameas(false)) ? 'OFF' : collector.status.queryReads }}</td>
+    </tr>
+    <tr>
+        <th>Query read kb</th>
+        <td>{{ (collector.status.queryReadKb is sameas(false)) ? 'OFF' : collector.status.queryReadKb }}</td>
+    </tr>
+    <tr>
+        <th>Query read time</th>
+        <td>{{ (collector.status.queryReadTime is sameas(false)) ? 'OFF' : collector.status.queryReadTime }}</td>
+    </tr>
+    <tr>
+        <th>Average query wall</th>
+        <td>{{ collector.status.averageQueryWall }}</td>
+    </tr>
+    <tr>
+        <th>Average query CPU</th>
+        <td>{{ (collector.status.averageQueryCpu is sameas(false)) ? 'OFF' : collector.status.averageQueryCpu }}</td>
+    </tr>
+    <tr>
+        <th>Average dist wall</th>
+        <td>{{ collector.status.averageDistWall }}</td>
+    </tr>
+    <tr>
+        <th>Average dist local</th>
+        <td>{{ collector.status.averageDistLocal }}</td>
+    </tr>
+    <tr>
+        <th>Average dist wait</th>
+        <td>{{ collector.status.averageDistWait }}</td>
+    </tr>
+    <tr>
+        <th>Average query reads</th>
+        <td>{{ (collector.status.averageQueryReads is sameas(false)) ? 'OFF' : collector.status.averageQueryReads }}</td>
+    </tr>
+    <tr>
+        <th>Average query read kb</th>
+        <td>{{ (collector.status.averageQueryReadKb is sameas(false)) ? 'OFF' : collector.status.averageQueryReadKb }}</td>
+    </tr>
+    <tr>
+        <th>Average query read time</th>
+        <td>{{ (collector.status.averageQueryReadTime is sameas(false)) ? 'OFF' : collector.status.averageQueryReadTime }}</td>
+    </tr>
 </table>
 {% endblock %}
 
