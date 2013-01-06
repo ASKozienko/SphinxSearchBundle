@@ -4,6 +4,7 @@ namespace ASK\SphinxSearchBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
@@ -60,5 +61,9 @@ class ASKSphinxSearchExtension extends Extension
     {
         $definition = $container->getDefinition('ask_sphinx_search.manager');
         $definition->replaceArgument(1, $config['indexes']);
+
+        if ($config['debug']) {
+            $definition->addMethodCall('setLogger', array(new Reference('ask_sphinx_search.logger')));
+        }
     }
 }

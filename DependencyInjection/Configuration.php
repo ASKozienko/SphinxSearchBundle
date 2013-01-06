@@ -31,6 +31,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('retry_count')->defaultValue(0)->end()
                 ->scalarNode('port')->defaultValue('9312')->end()
                 ->scalarNode('host')->defaultValue('localhost')->end()
+                ->booleanNode('debug')->defaultValue(false)->end()
             ->end()
         ;
 

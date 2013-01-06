@@ -1,6 +1,8 @@
 parameters:
     ask_sphinx_search.api.class:                        SphinxClient
     ask_sphinx_search.manager.class:                    ASK\SphinxSearch\SphinxManager
+    ask_sphinx_search.logger.class:                     ASK\SphinxSearch\Logging\SphinxLogger
+    ask_sphinx_search.ql_formatter.class:               ASK\SphinxSearch\SphinxQLFormatter
 
 services:
     ask_sphinx_search.api:
@@ -12,9 +14,17 @@ services:
             -                                           @ask_sphinx_search.api
             -                                           []
 
+    ask_sphinx_search.logger:
+        class:                                          %ask_sphinx_search.logger.class%
+
+    ask_sphinx_search.ql_formatter:
+        class:                                          %ask_sphinx_search.ql_formatter.class%
+
     data_collector.sphinx:
-        class: ASK\SphinxSearchBundle\DataCollector\SphinxDataCollector
+        class:                                          ASK\SphinxSearchBundle\DataCollector\SphinxDataCollector
         arguments:
             -                                           @ask_sphinx_search.manager
+            -                                           @ask_sphinx_search.logger
+            -                                           @ask_sphinx_search.ql_formatter
         tags:
             -                                           { name: data_collector, template: "ASKSphinxSearchBundle:Collector:layout.html.twig", id: "sphinx" }
